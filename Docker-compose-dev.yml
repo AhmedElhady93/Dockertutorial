@@ -1,0 +1,38 @@
+version: '3'
+services:
+  node-app:
+    build: 
+      context: . # build from root for docker file
+      target: development
+    container_name: express-container
+    volumes: 
+      - ./src:/app/src:ro
+    environment:
+      - Node_env=development
+    depends_on:
+      - postgres
+  
+  redis:
+    image: redis
+
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres-db:/var/lib/postgresql/data # Corrected the typo here
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+
+  nginx:
+    image: nginx:stable-alpine 
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node-app
+
+volumes:
+  postgres-db: # Add this line to define the volume
+  # mongo-db:
