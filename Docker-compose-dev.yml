@@ -10,7 +10,9 @@ services:
     environment:
       - Node_env=development
     depends_on:
-      - postgres
+      #- postgres
+      - mongo
+
   
   redis:
     image: redis
