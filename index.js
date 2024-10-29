@@ -8,34 +8,34 @@ const port = process.env.port || 4000;
 const app = express();
 
 
-// // connect db
-// const db_user = 'root';
-// const db_pass = 'example';
-// const db_port = '27017';
-// const db_ip = 'mongo';
-
-// const connectionStr = `mongodb://${db_user}:${db_pass}@${db_ip}:${db_port}`; 
-
-  
-// mongoose.connect(connectionStr)
-// .then(()=> console.log("connect to db"))
-// .catch(()=> console.log("failed to connect"));
-
-
+// connect db
 const db_user = 'root';
 const db_pass = 'example';
-const db_port = '5432';
-const db_ip = 'postgres';
+const db_port = '27017';
+const db_ip = 'mongo';
 
-const uri = `postgressql://${db_user}:${db_pass}@${db_ip}:${db_port}`; 
+const connectionStr = `mongodb://${db_user}:${db_pass}@${db_ip}:${db_port}`; 
 
-const client = new Client({
-    connectionString:uri,
-  })
-   
-  client.connect()
+  
+mongoose.connect(connectionStr)
 .then(()=> console.log("connect to db"))
 .catch(()=> console.log("failed to connect"));
+
+
+// const db_user = 'root';
+// const db_pass = 'example';
+// const db_port = '5432';
+// const db_ip = 'postgres';
+
+// const uri = `postgressql://${db_user}:${db_pass}@${db_ip}:${db_port}`; 
+
+// const client = new Client({
+//     connectionString:uri,
+//   })
+   
+//   client.connect()
+// .then(()=> console.log("connect to db"))
+// .catch(()=> console.log("failed to connect"));
 
 
 
@@ -57,7 +57,7 @@ redisClient.connect();
 
 app.get('/', (req, res) => {
     redisClient.set('products','products');
-    res.send('<h1>Hello TestImage! hi hi dev</h1>');
+    res.send('<h1>Hello TestImage! hello from aws serverg</h1>');
 });
 
 app.get('/data ',async (req, res) => {
