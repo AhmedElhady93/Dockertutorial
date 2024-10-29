@@ -41,5 +41,5 @@ services:
       - node-app
 
 volumes:
-  # postgres-db: # Add this line to define the volume
-  mongo-db:
+  postgres-db: # Add this line to define the volume
+  #mongo-db:
