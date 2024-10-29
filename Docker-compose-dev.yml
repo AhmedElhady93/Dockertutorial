@@ -14,22 +14,22 @@ services:
   
   redis:
     image: redis
-  mongo:
-    image: mongo
-    restart: always
-    volumes:
-      - 
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-  # postgres:
-  #   image: postgres
+  # mongo:
+  #   image: mongo
   #   restart: always
   #   volumes:
-  #     - postgres-db:/var/lib/postgresql/data # Corrected the typo here
+  #     - 
   #   environment:
-  #     POSTGRES_USER: root
-  #     POSTGRES_PASSWORD: example
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres-db:/var/lib/postgresql/data # Corrected the typo here
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
 
   nginx:
     image: nginx:stable-alpine 
