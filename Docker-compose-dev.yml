@@ -5,6 +5,7 @@ services:
       context: . # build from root for docker file
       target: development
     container_name: express-container
+    image: ahmedelhady77/dockertuturial
     volumes: 
       - ./src:/app/src:ro
     environment:
